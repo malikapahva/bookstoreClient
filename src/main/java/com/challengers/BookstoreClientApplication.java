@@ -1,15 +1,38 @@
 package com.challengers;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
+import java.util.List;
+
 @SpringBootApplication
 public class BookstoreClientApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         SpringApplication.run(BookstoreClientApplication.class, args);
+
+        RestTemplate restTemplate = new RestTemplate();
+
+        // get single book by isbn
+        Book book = restTemplate.getForObject("http://localhost:8084/book/isbn/isbn2", Book.class);
+        System.out.println(book.getIsbn());
+
+        // get all books - one way by specifying array of books(Preferred)
+         Book[] bookArray = restTemplate.getForObject("http://localhost:8084/book/getbooks", Book[].class);
+        System.out.println(bookArray.length);
+
+        // get all books - another way by fetching json and then convert it into list of books
+        ObjectMapper objectMapper = new ObjectMapper();
+        String bookJson = restTemplate.getForObject("http://localhost:8084/book/getbooks", String.class);
+        List<Book> bookList = objectMapper.readValue(bookJson, new TypeReference<List<Book>>() {});
+        System.out.println(bookList.size());
+        
 
         /*
         UserControllerMethods userController = new UserControllerMethods();
@@ -32,7 +55,7 @@ public class BookstoreClientApplication {
         System.out.println(updateResult);
         */
 
-        //Check for book controller
+       /* //Check for book controller
         BookControllerMethods bookController = new BookControllerMethods();
 
         //Check to get all books
@@ -51,6 +74,6 @@ public class BookstoreClientApplication {
         bookController.getBookByAuthorName("John Benoit");
 
         //Check to find books by publisher
-        bookController.getBookByPublisherName("abc publications");
+        bookController.getBookByPublisherName("abc publications");*/
     }
 }
