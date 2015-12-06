@@ -29,163 +29,101 @@ public class Book {
     public Book() {}
 
     //Methods for the book controller
+
+
     public Long getBookId() {
-
         return bookId;
-
     }
 
     public void setBookId(Long bookId) {
-
         this.bookId = bookId;
-
     }
 
     public String getBookTitle() {
-
         return bookTitle;
-
     }
 
     public void setBookTitle(String bookTitle) {
-
         this.bookTitle = bookTitle;
-
     }
 
     public Set<String> getAuthorNames() {
-
         return authorNames;
-
     }
 
     public void setAuthorNames(Set<String> authorNames) {
-
         this.authorNames = authorNames;
-
     }
 
     public Set<String> getPublisherNames() {
-
         return publisherNames;
-
     }
 
     public void setPublisherNames(Set<String> publisherNames) {
-
         this.publisherNames = publisherNames;
-
     }
 
     public int getPublishedYear() {
-
         return publishedYear;
-
     }
 
     public void setPublishedYear(int publishedYear) {
-
         this.publishedYear = publishedYear;
-
     }
 
     public String getIsbn() {
-
         return isbn;
-
     }
 
     public void setIsbn(String isbn) {
-
         this.isbn = isbn;
-
     }
 
     public String getLanguage() {
-
         return language;
-
     }
 
     public void setLanguage(String language) {
-
         this.language = language;
-
     }
 
     public double getPrice() {
-
         return price;
-
     }
 
     public void setPrice(double price) {
-
         this.price = price;
-
     }
 
     public int getQuantity() {
-
         return quantity;
-
     }
 
     public void setQuantity(int quantity) {
-
         this.quantity = quantity;
-
     }
 
     public int getSold() {
-
         return sold;
-
     }
 
     public void setSold(int sold) {
-
         this.sold = sold;
-
-    }
-
-    private String authorNames (Set<String> authors) {
-
-        String result = "";
-
-        for (String i : authors) {
-
-            result += i + ", ";
-
-        }
-
-        return result;
-    }
-
-    private String publisherNames (Set<String> publishers) {
-
-        String result = "";
-
-        for (String i : publishers) {
-
-            result += i + ", ";
-        }
-
-        return result;
     }
 
     @Override
     public String toString() {
-
-        return "\n" +
-                "Book Title: " + bookTitle + "\n" +
-                "Book Id: " + bookId + "\n" +
-                "Author Names: " + authorNames(authorNames) + "\n" +
-                "Publisher Names: " + publisherNames(publisherNames) + "\n" +
-                "ISBN: " + isbn + "\n" +
-                "Language: " + language + "\n" +
-                "Price: " + price + "\n" +
-                "Quantity: " + quantity + "\n" +
-                "Sold: " + sold + "\n";
+        return "Book{" +
+                "bookId=" + bookId +
+                ", bookTitle='" + bookTitle + '\'' +
+                ", authorNames=" + authorNames +
+                ", publisherNames=" + publisherNames +
+                ", publishedYear=" + publishedYear +
+                ", isbn='" + isbn + '\'' +
+                ", language='" + language + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", sold=" + sold +
+                '}';
     }
 }
